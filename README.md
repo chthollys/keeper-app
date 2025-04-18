@@ -8,6 +8,7 @@ This is a **Keeper App** built with **React**. It allows users to create, view, 
 
 - **Create Notes**: Users can add new notes with a title and content.
 - **View Notes**: All created notes are displayed dynamically on the page.
+- **Edit Notes**: Users can edit their created notes by its title and content by clicking "EDIT" button.
 - **Delete Notes**: Users can delete individual notes by clicking the "DELETE" button.
 
 ---

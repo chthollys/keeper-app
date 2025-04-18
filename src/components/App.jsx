@@ -21,12 +21,13 @@ function App() {
   }
 
   const editNote = (id, changes) => {
-    console.log(changes);
+    // console.log(changes);
     setNotes((prevNotes) => {
-      return prevNotes.map((_, index) => {
-        if (index == id) {
+      return prevNotes.map((note, index) => {
+        if (index === id) {
           return { title: changes.title, content: changes.content };
         }
+        return note;
       })
     })
   };
@@ -36,6 +37,8 @@ function App() {
       return prevNotes.filter((_, index) => index !== id);
     })
   };
+
+  useState(console.log(notes), [notes]);
 
   return (
     <div>

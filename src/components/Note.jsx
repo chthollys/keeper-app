@@ -8,6 +8,13 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
 
   const isEmpty = (str) => str.trim() === "";
 
+  const editTrueState = () => {
+    setEditedTitle(title);
+    setEditedContent(content);
+    setIsEditing(true);
+    // console.log(id, title, editedTitle, content, editedContent);
+  };
+
   const trackEditedValue = (event) => {
     const {name, value} = event.target;
     if (name == "editedTitle") {
@@ -64,7 +71,7 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
           <h1>{title}</h1>
           <p>{content}</p>
           <div className="button-container">
-              <button onClick={() => setIsEditing(true)}>EDIT</button>
+              <button onClick={editTrueState}>EDIT</button>
               <button onClick={() => onClickDelete(id)}>DELETE</button>
           </div>
         </>
