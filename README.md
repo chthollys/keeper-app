@@ -1,6 +1,6 @@
-# Keeper App (v1.0)
+# Keeper App (v1.1)
 
-This is a **Keeper App** built with **React**. It allows users to create, view, and delete notes dynamically. The project demonstrates the use of React hooks like `useState` and `useEffect` to manage state and lifecycle events.
+This is a **Keeper App** built with **React**. It allows users to create, view, and delete notes dynamically. The project demonstrates the use of React hooks to manage state and lifecycle events.
 
 ---
 
@@ -45,7 +45,7 @@ This is a **Keeper App** built with **React**. It allows users to create, view, 
 4. `Header.jsx` and `Footer.jsx` : Simple components for the app's header and footer.
 
 ## Future Improvements
-1. Add update and edit functionality.
+1. Add update and edit functionality. [DONE => v1.1]
 2. Add persistent storage using local storage or a backend API.
 3. Implement search functionality to filter notes.
 4. Add categories or tags for better organization.

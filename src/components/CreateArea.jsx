@@ -32,7 +32,6 @@ function CreateArea({ onSubmitApp }) {
       onSubmitApp(title, content);
       setTitle("");
       setContent("");
-      // console.log("Succesfully requested onSubmitAction");
     } catch (error) {
       console.error("Error occurred while submitting the note:", error);
     }
@@ -40,14 +39,14 @@ function CreateArea({ onSubmitApp }) {
 
   return (
     <div>
-      <form onSubmit={onSubmitAction}>
+      <form className="main-form" onSubmit={onSubmitAction}>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <input
           name="title"
           placeholder="Title"
           value={title}
           onChange={trackValue}
         />
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         <textarea
           name="content"
           placeholder="Take a note..."

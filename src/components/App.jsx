@@ -20,20 +20,36 @@ function App() {
     });
   }
 
+  const editNote = (id, changes) => {
+    console.log(changes);
+    setNotes((prevNotes) => {
+      return prevNotes.map((_, index) => {
+        if (index == id) {
+          return { title: changes.title, content: changes.content };
+        }
+      })
+    })
+  };
+
   const deleteNote = (id) => {
     setNotes((prevNotes) => {
       return prevNotes.filter((_, index) => index !== id);
     })
   };
 
-  // useEffect(() => console.log(notes), [notes]);
-
   return (
     <div>
       <Header />
       <CreateArea onSubmitApp={appendNote} />
       {notes.map((item, index) => (
-        <Note key={index} id={index} title={item.title} content={item.content} onClickDelete={deleteNote}/>
+        <Note
+          key={index}
+          id={index}
+          title={item.title}
+          content={item.content}
+          onClickDelete={deleteNote}
+          onClickEdit={editNote}
+        />
       ))}
       <Footer />
     </div>

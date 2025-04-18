@@ -44,20 +44,27 @@ footer p {
   margin: 16px;
   float: left;
 }
-.note h1 {
+.note h1,
+.secondary-form .h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
+  font-weight: bold;
 }
-.note p {
+
+.note p
+.secondary-form .paragraph {
   font-size: 1.1em;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-.note button {
-  position: relative;
-  float: right;
+.note .button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.button-container button {
   margin-right: 10px;
   color: #f5ba13;
   border: none;
@@ -67,15 +74,16 @@ footer p {
   outline: none;
 }
 
-form {
+.main-form {
   position: relative;
   width: 480px;
   margin: 30px auto 20px auto;
   background: #fff;
   padding: 15px;
   border-radius: 7px;
-  box-shadow: 0 1px 5px rgb(138, 137, 137);
+  box-shadow: 0 1px 10px rgb(138, 137, 137);
 }
+
 form input,
 form textarea {
   width: 100%;
@@ -86,7 +94,8 @@ form textarea {
   font-family: inherit;
   resize: none;
 }
-form button {
+
+.main-form button {
   position: absolute;
   right: 18px;
   bottom: -18px;
