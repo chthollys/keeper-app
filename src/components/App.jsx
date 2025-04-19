@@ -1,62 +1,60 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
-import Note from "./Note";
+import NotesList from "./NotesList"
 import CreateArea from "./CreateArea";
+import { v4 as uuidv4 } from "uuid";
+
+// The App component serves as the main container for the Keeper app.
+// It manages the state of notes, handles creating, editing, and deleting notes,
+// and renders the Header, Footer, CreateArea, and NotesList components.
 
 function App() {
 
   const [notes, setNotes] = useState([]);
 
-  const appendNote = (noteTitle, noteContent) => {
+  const createNote = (noteTitle, noteContent) => {
     setNotes((prevNotes) => {
       return [
         ...prevNotes,
         {
+          id: uuidv4(),
           title: noteTitle,
           content: noteContent,
         }
       ]
-    });
+    })
   }
 
+  // The editNote function updates a specific note in the notes array.
+  // It takes an id and a changes object as arguments, maps through the notes array,
+  // and replaces the note with the matching id with the updated title and content.
   const editNote = (id, changes) => {
-    // console.log(changes);
     setNotes((prevNotes) => {
       return prevNotes.map((note, index) => {
-        if (index === id) {
-          return { title: changes.title, content: changes.content };
+        if (note.id === id) {
+          return { ...note, ...changes };
         }
         return note;
       })
     })
   };
 
+  // Deletes a note by filtering out the note with the matching id
   const deleteNote = (id) => {
     setNotes((prevNotes) => {
-      return prevNotes.filter((_, index) => index !== id);
-    })
+      return prevNotes.filter((note) => note.id !== id);
+    });
   };
-
-  useState(console.log(notes), [notes]);
 
   return (
     <div>
       <Header />
-      <CreateArea onSubmitApp={appendNote} />
-      {notes.map((item, index) => (
-        <Note
-          key={index}
-          id={index}
-          title={item.title}
-          content={item.content}
-          onClickDelete={deleteNote}
-          onClickEdit={editNote}
-        />
-      ))}
+      <CreateArea onCreateNote={createNote} />
+      <NotesList notes={notes} onDelete={deleteNote} onEdit={editNote}/>
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CreateArea({ onSubmitApp }) {
+function CreateArea({ onCreateNote }) {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -29,13 +29,13 @@ function CreateArea({ onSubmitApp }) {
     }
     try {
       setErrorMessage(""); // Clear error message on successful submission
-      onSubmitApp(title, content);
+      onCreateNote(title, content);
       setTitle("");
       setContent("");
     } catch (error) {
       console.error("Error occurred while submitting the note:", error);
     }
-  }
+  };
 
   return (
     <div>

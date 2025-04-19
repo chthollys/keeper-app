@@ -12,7 +12,6 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
     setEditedTitle(title);
     setEditedContent(content);
     setIsEditing(true);
-    // console.log(id, title, editedTitle, content, editedContent);
   };
 
   const trackEditedValue = (event) => {
@@ -78,6 +77,6 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
       )}
     </div>
   );
-}
+};
 
 export default Note;
