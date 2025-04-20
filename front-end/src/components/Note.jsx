@@ -32,13 +32,9 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
       setErrorMessage("Please complete the note.");
       return;
     }
-    try {
-      setErrorMessage("");
-      onClickEdit(id, { title: editedTitle, content: editedContent });
-      setIsEditing(false);
-    } catch(error) {
-      console.error("Error occurred while submitting the note:", error);
-    }
+    setErrorMessage("");
+    onClickEdit(id, { title: editedTitle, content: editedContent });
+    setIsEditing(false);
   };
 
   return (

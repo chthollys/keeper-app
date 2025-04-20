@@ -27,14 +27,10 @@ function CreateArea({ onCreateNote }) {
       setErrorMessage("Please complete the note");
       return;
     }
-    try {
-      setErrorMessage(""); // Clear error message on successful submission
-      onCreateNote(title, content);
-      setTitle("");
-      setContent("");
-    } catch (error) {
-      console.error("Error occurred while submitting the note:", error);
-    }
+    setErrorMessage(""); // Clear error message on successful submission
+    onCreateNote(title, content);
+    setTitle("");
+    setContent("");
   };
 
   return (

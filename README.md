@@ -1,56 +1,178 @@
-# Keeper App (v1.1)
+# Keeper App (v1.2)
 
-This is a **Keeper App** built with **React**. It allows users to create, view, and delete notes dynamically. The project demonstrates the use of React hooks to manage state and lifecycle events.
-
----
+This project is a full-stack web application for creating, editing, and deleting notes. It includes a **React frontend** and a **Node.js backend** with a PostgreSQL database.
 
 ## Features
 
-- **Create Notes**: Users can add new notes with a title and content.
-- **View Notes**: All created notes are displayed dynamically on the page.
-- **Edit Notes**: Users can edit their created notes by its title and content by clicking "EDIT" button.
-git ls-remote --tags origin- **Delete Notes**: Users can delete individual notes by clicking the "DELETE" button.
+- **Frontend**:
+  - Create, edit, and delete notes.
+  - Notes are displayed dynamically based on the database.
+  - Responsive UI built with React.
+- **Backend**:
+  - RESTful API for managing notes.
+  - PostgreSQL database for storing notes.
+  - CORS enabled for cross-origin requests.
+- **Database**:
+  - Notes are stored in a PostgreSQL table with fields for `id`, `title`, and `content`.
 
----
+## Technologies Used
 
-## How to Run
+- **Frontend**: React, Axios, Vite
+- **Backend**: Node.js, Express.js, PostgreSQL
+- **Database**: PostgreSQL
+- **Environment Variables**: `dotenv`
 
-1. Clone the repository:
+## Project Structure
+
+```bash
+keeper-app/
+├── back-end/
+│   ├── .env                     # Environment variables
+│   ├── index.js                 # Main backend server file
+│   ├── package.json             # Backend dependencies
+│   └── pnpm-lock.yaml           # Backend lockfile
+├── front-end/
+│   ├── index.html               # Frontend entry point
+│   ├── package.json             # Frontend dependencies
+│   ├── pnpm-lock.yaml           # Frontend lockfile
+│   ├── vite.config.js           # Vite configuration
+│   ├── public/
+│   │   └── styles.css           # Global styles
+│   └── src/
+│       ├── index.jsx            # Frontend entry point
+│       └── components/
+│           ├── App.jsx          # Main React component
+│           ├── CreateArea.jsx   # Component for creating notes
+│           ├── Footer.jsx       # Footer component
+│           ├── Header.jsx       # Header component
+│           ├── Note.jsx         # Individual note component
+│           └── NotesList.jsx    # Component for rendering the list of notes
+└── README.md                    # Project documentation
+```
+
+## Installation
+
+### Backend Setup
+1. Navigate to the backend directory:
    ```bash
-   git clone https://github.com/chthollys/keeper-app.git
-   cd keeper-app
+   cd back-end
+   ```
 2. Install dependencies:
    ```bash
    pnpm install
-3. Start the development server:
+   ```
+3. Set up the `.env` file:
+   Create a `.env` file in the `back-end` directory and add the following:
+   ```bash
+   PG_USERNAME=your_postgres_username
+   PG_PASSWORD=your_postgres_password
+   PG_HOST=localhost
+   PG_DATABASE=your_database_name
+   PG_PORT=5432
+   ```
+4. Start the backend server:
+   ```bash
+   pnpm start
+   ```
+   The backend will run on `http://localhost:3000`.
+
+### Frontend Setup
+1. Navigate to the frontend directory:
+   ```bash
+   cd front-end
+   ```
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+3. Start the frontend development server:
    ```bash
    pnpm run dev
-4. Open the application in your browser at:
-   ```bash
-   http://localhost:3000
+   ```
+   The frontend will run on `http://localhost:5173`.
 
-## Components
+### Database Setup
+1. Create a PostgreSQL database.
+2. Create a `notes` table with the following schema:
+   ```sql
+   CREATE TABLE notes (
+       id UUID PRIMARY KEY,
+       title VARCHAR(255) NOT NULL,
+       content TEXT NOT NULL
+   );
+   ```
 
-1. `App.jsx`
-- Manages the overall state of the application, including the list of notes.
-- Handles adding and deleting notes.
-- Passes necessary props to child components (CreateArea and Note).
-2. `CreateArea.jsx`
-- A form component for creating new notes.
-- Includes input fields for the note title and content.
-- Handles form submission and passes the data to the parent component (App.jsx).
-3. `NotesList.jsx`
-- Represents list of note.
-- Displays the notes with its corresponding properties.
-4. `Note.jsx`
-- Represents individual notes.
-- Displays the note title and content.
-- Includes "EDIT" and "DELETE" button to edit and remove the note.
-5. `Header.jsx` and `Footer.jsx` : Simple components for the app's header and footer.
+## Usage
+
+1. Open the frontend in your browser at `http://localhost:5173`.
+2. Use the app to create, edit, and delete notes.
+3. Notes will be dynamically updated based on the database.
+
+## API Endpoints
+
+### GET `/api/notes`
+- **Description**: Fetch all notes.
+- **Response**: Array of notes.
+
+### POST `/api/notes`
+- **Description**: Create a new note.
+- **Request Body**:
+  ```json
+  {
+    "id": "uuid",
+    "title": "Note title",
+    "content": "Note content"
+  }
+  ```
+- **Response**: The created note.
+
+### PUT `/api/notes/:id`
+- **Description**: Update an existing note.
+- **Request Body**:
+  ```json
+  {
+    "title": "Updated title",
+    "content": "Updated content"
+  }
+  ```
+- **Response**: The updated note.
+
+### DELETE `/api/notes/:id`
+- **Description**: Delete a note by ID.
+- **Response**: Confirmation message.
+
+## Environment Variables
+
+The app uses the following environment variables:
+
+| Variable        | Description                      |
+|-----------------|----------------------------------|
+| `PG_USERNAME`   | PostgreSQL username             |
+| `PG_PASSWORD`   | PostgreSQL password             |
+| `PG_HOST`       | PostgreSQL host (e.g., `localhost`) |
+| `PG_DATABASE`   | PostgreSQL database name        |
+| `PG_PORT`       | PostgreSQL port (default: `5432`) |
+
+## Dependencies
+
+### Backend
+- `express`: Web framework for Node.js.
+- `pg`: PostgreSQL client for Node.js.
+- `dotenv`: For managing environment variables.
+- `cors`: For enabling cross-origin requests.
+
+### Frontend
+- `react`: JavaScript library for building user interfaces.
+- `axios`: For making HTTP requests.
+- `vite`: Frontend build tool.
+
+## Acknowledgments
+
+This project is part of the Udemy course on React and Node.js development. Special thanks to the course instructor for guidance.
 
 ## Future Improvements
 1. Add update and edit functionality. [DONE => v1.1]
-2. Add persistent storage using local storage or a backend API.
+2. Add persistent storage using local storage or a backend API. [DONE => v1.2]
 3. Implement search functionality to filter notes.
 4. Add categories or tags for better organization.
 5. Improve styling for a more polished user interface.
