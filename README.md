@@ -1,4 +1,4 @@
-# Keeper App (v1.2)
+# Keeper App (v1.3) (JS => TS)
 
 This project is a full-stack web application for creating, editing, and deleting notes. It includes a **React frontend** and a **Node.js backend** with a PostgreSQL database.
 
@@ -28,9 +28,10 @@ This project is a full-stack web application for creating, editing, and deleting
 keeper-app/
 ├── back-end/
 │   ├── .env                     # Environment variables
-│   ├── index.js                 # Main backend server file
+│   ├── index.ts                 # Main backend server file
 │   ├── package.json             # Backend dependencies
-│   └── pnpm-lock.yaml           # Backend lockfile
+│   ├── pnpm-lock.yaml           # Backend lockfile
+│   ├── tsconfig.json            # TypeScript configuration
 ├── front-end/
 │   ├── index.html               # Frontend entry point
 │   ├── package.json             # Frontend dependencies
@@ -39,15 +40,15 @@ keeper-app/
 │   ├── public/
 │   │   └── styles.css           # Global styles
 │   └── src/
-│       ├── index.jsx            # Frontend entry point
+│       ├── index.tsx            # Frontend entry point
 │       └── components/
-│           ├── App.jsx          # Main React component
-│           ├── CreateArea.jsx   # Component for creating notes
-│           ├── Footer.jsx       # Footer component
-│           ├── Header.jsx       # Header component
-│           ├── Note.jsx         # Individual note component
-│           └── NotesList.jsx    # Component for rendering the list of notes
-└── README.md                    # Project documentation
+│           ├── App.tsx          # Main React component
+│           ├── CreateArea.tsx   # Component for creating notes
+│           ├── Footer.tsx       # Footer component
+│           ├── Header.tsx       # Header component
+│           ├── Note.tsx         # Individual note component
+│           └── NotesList.tsx    # Component for rendering the list of notes
+└── README.md                    #Project documentation
 ```
 
 ## Installation
@@ -160,11 +161,13 @@ The app uses the following environment variables:
 - `pg`: PostgreSQL client for Node.js.
 - `dotenv`: For managing environment variables.
 - `cors`: For enabling cross-origin requests.
+- `uuid`: For generating unique IDs.
 
 ### Frontend
 - `react`: JavaScript library for building user interfaces.
 - `axios`: For making HTTP requests.
 - `vite`: Frontend build tool.
+- `react-toastify`: For toast notifications.
 
 ## Acknowledgments
 
