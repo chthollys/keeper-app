@@ -1,7 +1,13 @@
 import React from "react";
 import Note from "./Note";
 
-function NotesList({ notes, onDelete, onEdit }) {
+interface NotesListProps {
+  notes: { id: string; title: string; content: string }[];
+  onDelete: (id: string) => void;
+  onEdit: (id: string, updatedData: { title: string; content: string }) => void;
+}
+
+function NotesList({ notes, onDelete, onEdit }: NotesListProps) {
   return (
     <>
       {notes.map((item, _) => (

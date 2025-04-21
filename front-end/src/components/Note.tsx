@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 
-function Note({ id, title, content, onClickDelete, onClickEdit}) {
+interface NoteProps {
+  id: string;
+  title: string;
+  content: string;
+  onClickDelete: (id: string) => void;
+  onClickEdit: (id: string, updatedData: { title: string, content: string }) => void;
+}
+
+function Note({ id, title, content, onClickDelete, onClickEdit}: NoteProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(title);
   const [editedContent, setEditedContent] = useState(content);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const isEmpty = (str) => str.trim() === "";
+  const isEmpty = (str: string) => str.trim() === "";
 
   const editTrueState = () => {
     setEditedTitle(title);
@@ -14,7 +22,7 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
     setIsEditing(true);
   };
 
-  const trackEditedValue = (event) => {
+  const trackEditedValue = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = event.target;
     if (name == "editedTitle") {
       setEditedTitle(value);
@@ -25,7 +33,7 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
     }
   };
 
-  const onSubmitSecondary = (event) => {
+  const onSubmitSecondary = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const isFormIncomplete = isEmpty(editedTitle) || isEmpty(editedContent);
     if (isFormIncomplete) {
@@ -33,7 +41,15 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
       return;
     }
     setErrorMessage("");
-    onClickEdit(id, { title: editedTitle, content: editedContent });
+    try {
+      onClickEdit(id, { title: editedTitle, content: editedContent });
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error("Error editing note: ", (error as any)?.response?.data || error.message);
+      } else {
+        console.error("An unknown error occurred.");
+      }
+    }
     setIsEditing(false);
   };
 
@@ -41,12 +57,13 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
     <div className="note">
       { isEditing ? (
         <form className="secondary-form" onSubmit={onSubmitSecondary}>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
           <input
             name="editedTitle"
             placeholder="Title"
             value={editedTitle}
             onChange={trackEditedValue}
+            aria-label="Edit Note Title"
             className="h1"
           />
           <textarea
@@ -54,11 +71,20 @@ function Note({ id, title, content, onClickDelete, onClickEdit}) {
             placeholder="Take a note..."
             value={editedContent}
             onChange={trackEditedValue}
+            aria-label="Edit Note Content"
             className="paragraph"
           />
           <div className="button-container">
             <button type="submit">SAVE</button>
-            <button onClick={() => setIsEditing(false)}>CANCEL</button>
+            <button
+              onClick={() => {
+                setEditedTitle(title);
+                setEditedContent(content);
+                setIsEditing(false);
+              }}
+            >
+              CANCEL
+            </button>
           </div>
         </form>
       ) : (
