@@ -1,8 +1,8 @@
-# Keeper App (v1.3) (JS => TS)
+# Keeper App (v1.3) (TypeScript)
 
 This project is a full-stack web application for creating, editing, and deleting notes. It includes a **React frontend** and a **Node.js backend** with a PostgreSQL database.
 
-## Features
+## 💫 Features
 
 - **Frontend**:
   - Create, edit, and delete notes.
@@ -15,14 +15,14 @@ This project is a full-stack web application for creating, editing, and deleting
 - **Database**:
   - Notes are stored in a PostgreSQL table with fields for `id`, `title`, and `content`.
 
-## Technologies Used
+## 🔍 Technologies Used
 
 - **Frontend**: React, Axios, Vite
 - **Backend**: Node.js, Express.js, PostgreSQL
 - **Database**: PostgreSQL
 - **Environment Variables**: `dotenv`
 
-## Project Structure
+## 💫 Project Structure
 
 ```bash
 keeper-app/
@@ -51,9 +51,10 @@ keeper-app/
 └── README.md                    #Project documentation
 ```
 
-## Installation
+## 💻 Installation
 
 ### Backend Setup
+
 1. Navigate to the backend directory:
    ```bash
    cd back-end
@@ -73,11 +74,12 @@ keeper-app/
    ```
 4. Start the backend server:
    ```bash
-   pnpm start
+   pnpm dev
    ```
    The backend will run on `http://localhost:3000`.
 
 ### Frontend Setup
+
 1. Navigate to the frontend directory:
    ```bash
    cd front-end
@@ -93,6 +95,7 @@ keeper-app/
    The frontend will run on `http://localhost:5173`.
 
 ### Database Setup
+
 1. Create a PostgreSQL database.
 2. Create a `notes` table with the following schema:
    ```sql
@@ -103,19 +106,21 @@ keeper-app/
    );
    ```
 
-## Usage
+## 💡 Usage
 
 1. Open the frontend in your browser at `http://localhost:5173`.
 2. Use the app to create, edit, and delete notes.
 3. Notes will be dynamically updated based on the database.
 
-## API Endpoints
+## 📲 API Endpoints
 
 ### GET `/api/notes`
+
 - **Description**: Fetch all notes.
 - **Response**: Array of notes.
 
 ### POST `/api/notes`
+
 - **Description**: Create a new note.
 - **Request Body**:
   ```json
@@ -128,6 +133,7 @@ keeper-app/
 - **Response**: The created note.
 
 ### PUT `/api/notes/:id`
+
 - **Description**: Update an existing note.
 - **Request Body**:
   ```json
@@ -139,24 +145,26 @@ keeper-app/
 - **Response**: The updated note.
 
 ### DELETE `/api/notes/:id`
+
 - **Description**: Delete a note by ID.
 - **Response**: Confirmation message.
 
-## Environment Variables
+## 🗄️ Environment Variables
 
 The app uses the following environment variables:
 
-| Variable        | Description                      |
-|-----------------|----------------------------------|
-| `PG_USERNAME`   | PostgreSQL username             |
-| `PG_PASSWORD`   | PostgreSQL password             |
-| `PG_HOST`       | PostgreSQL host (e.g., `localhost`) |
-| `PG_DATABASE`   | PostgreSQL database name        |
-| `PG_PORT`       | PostgreSQL port (default: `5432`) |
+| Variable      | Description                         |
+| ------------- | ----------------------------------- |
+| `PG_USERNAME` | PostgreSQL username                 |
+| `PG_PASSWORD` | PostgreSQL password                 |
+| `PG_HOST`     | PostgreSQL host (e.g., `localhost`) |
+| `PG_DATABASE` | PostgreSQL database name            |
+| `PG_PORT`     | PostgreSQL port (default: `5432`)   |
 
-## Dependencies
+## 🔑 Dependencies
 
 ### Backend
+
 - `express`: Web framework for Node.js.
 - `pg`: PostgreSQL client for Node.js.
 - `dotenv`: For managing environment variables.
@@ -164,16 +172,18 @@ The app uses the following environment variables:
 - `uuid`: For generating unique IDs.
 
 ### Frontend
+
 - `react`: JavaScript library for building user interfaces.
 - `axios`: For making HTTP requests.
 - `vite`: Frontend build tool.
 - `react-toastify`: For toast notifications.
 
-## Acknowledgments
+## 🖋️ Acknowledgments
 
 This project is part of the Udemy course on React and Node.js development. Special thanks to the course instructor for guidance.
 
-## Future Improvements
+## 📋 Future Improvements
+
 1. Add update and edit functionality. [DONE => v1.1]
 2. Add persistent storage using local storage or a backend API. [DONE => v1.2]
 3. Implement search functionality to filter notes.
