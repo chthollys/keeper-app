@@ -1,8 +1,8 @@
-# Keeper App (v1.3) (JS => TS)
+# Keeper App (v1.3) (TypeScript)
 
 This project is a full-stack web application for creating, editing, and deleting notes. It includes a **React frontend** and a **Node.js backend** with a PostgreSQL database.
 
-## Features
+## 💫 Features
 
 - **Frontend**:
   - Create, edit, and delete notes.
@@ -15,14 +15,14 @@ This project is a full-stack web application for creating, editing, and deleting
 - **Database**:
   - Notes are stored in a PostgreSQL table with fields for `id`, `title`, and `content`.
 
-## Technologies Used
+## 🔍 Technologies Used
 
 - **Frontend**: React, Axios, Vite
 - **Backend**: Node.js, Express.js, PostgreSQL
 - **Database**: PostgreSQL
 - **Environment Variables**: `dotenv`
 
-## Project Structure
+## 💫 Project Structure
 
 ```bash
 keeper-app/
@@ -51,7 +51,7 @@ keeper-app/
 └── README.md                    #Project documentation
 ```
 
-## Installation
+## 💻 Installation
 
 ### Backend Setup
 1. Navigate to the backend directory:
@@ -103,13 +103,13 @@ keeper-app/
    );
    ```
 
-## Usage
+## 💡 Usage
 
 1. Open the frontend in your browser at `http://localhost:5173`.
 2. Use the app to create, edit, and delete notes.
 3. Notes will be dynamically updated based on the database.
 
-## API Endpoints
+## 📲 API Endpoints
 
 ### GET `/api/notes`
 - **Description**: Fetch all notes.
@@ -142,7 +142,7 @@ keeper-app/
 - **Description**: Delete a note by ID.
 - **Response**: Confirmation message.
 
-## Environment Variables
+## 🗄️ Environment Variables
 
 The app uses the following environment variables:
 
@@ -154,7 +154,7 @@ The app uses the following environment variables:
 | `PG_DATABASE`   | PostgreSQL database name        |
 | `PG_PORT`       | PostgreSQL port (default: `5432`) |
 
-## Dependencies
+## 🔑 Dependencies
 
 ### Backend
 - `express`: Web framework for Node.js.
@@ -169,11 +169,11 @@ The app uses the following environment variables:
 - `vite`: Frontend build tool.
 - `react-toastify`: For toast notifications.
 
-## Acknowledgments
+## 🖋️ Acknowledgments
 
 This project is part of the Udemy course on React and Node.js development. Special thanks to the course instructor for guidance.
 
-## Future Improvements
+## 📋 Future Improvements
 1. Add update and edit functionality. [DONE => v1.1]
 2. Add persistent storage using local storage or a backend API. [DONE => v1.2]
 3. Implement search functionality to filter notes.
